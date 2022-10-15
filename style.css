@@ -16,8 +16,7 @@
 
 /* Global Styles===============*/
 
-::after,
-::before {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -31,6 +30,7 @@ html {
 
 ul {
     list-style-type: none;
+
 }
 
 a {
@@ -58,7 +58,6 @@ h2 {
 h3 {
     font-size: 36px;
     line-height: 48px;
-    text-align: center;
 }
 
 h4 {
@@ -111,6 +110,7 @@ body {
     border-radius: 4px;
     text-align: center;
     margin: 1rem;
+    cursor: pointer
 }
 
 .btn:hover {
@@ -124,12 +124,19 @@ body {
     border: 1px solid var(--clr-primary-1);
 }
 
+.section-center {
+    max-width: 80%;
+    margin: auto;
+}
+
 /*  global classes */
 
 /* header */
 header {
-    background-color: var(--clr-primary-1);
-    padding: 3rem 0 4rem 0;
+    margin: auto;
+    background-image: url(https://media.istockphoto.com/vectors/blockchain-technology-background-vector-id1132628790?k=20&m=1132628790&s=170667a&w=0&h=IqHr2jVxSfPh2MfA62uiIXvc7RMhiAcM257SfZThzk8=);
+    padding: 2rem 1rem 6rem 1rem;
+    max-width: 1920px;
 }
 
 nav {
@@ -139,6 +146,8 @@ nav {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    animation-name: logo;
+    animation-duration: 12s;
 }
 
 nav ul {
@@ -147,41 +156,99 @@ nav ul {
     line-height: 15px;
     gap: 1.5rem;
     margin-right: 2rem;
+    cursor: pointer;
+
 }
 
 .menu {
-    font-size: 2rem;
+    font-size: 3rem;
     display: none;
 }
 
 main {
-    width: 80%;
-    margin: 2rem auto;
+    max-width: 80%;
+    margin: 5rem auto;
     display: flex;
     gap: 2rem;
-
 }
 
+.personal {
+    position: relative;
+}
+
+.personal-info {
+    position: relative;
+    overflow: hidden;
+    animation-name: personal_info;
+    animation-duration: 4s;
+}
+
+@keyframes personal_info {
+    from {
+        left: -1600px;
+        opacity: 0%;
+
+    }
+
+    to {
+        left: 0;
+        opacity: 100%;
+    }
+}
+
+.small-personal-photo {
+    position: absolute;
+    top: -80px;
+    left: -80px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    animation-name: logo;
+    animation-duration: 12s;
+
+}
 
 .personal-photo {
     position: relative;
-
+    height: 400px;
+    width: 400px;
 }
 
 .img-container-photo {
+    position: absolute;
     height: 400px;
     width: 400px;
     border-radius: 50%;
     object-fit: cover;
-    background-color: var(--clr-black);
+    background-color: rgb(8, 10, 25);
     text-align: center;
     overflow: hidden;
+    animation-name: personal_photo;
+    animation-duration: 3s;
 }
+
+@keyframes personal_photo {
+    from {
+        right: -600px;
+        opacity: 0%;
+
+    }
+
+    to {
+        right: 0;
+        opacity: 100%;
+    }
+}
+
+
 
 .img-logo {
     position: absolute;
     height: 70px;
     width: 70px;
+    animation-name: logo;
+    animation-duration: 12s;
+
 }
 
 .img-logo2 {
@@ -197,7 +264,72 @@ main {
     right: 0;
 }
 
+@keyframes logo {
+    0% {
+        opacity: 0%;
+    }
+
+    25% {
+        opacity: 0%;
+    }
+
+    50% {
+        opacity: 90%;
+    }
+
+    75% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 100%
+    }
+}
+
 /* header */
+
+/* about-me section style */
+.about-me {
+    background-color: #24263B;
+    margin: auto;
+    max-width: 1920px;
+    padding: 3rem 0 6rem 0;
+
+}
+
+.about-me-info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.about-img-container {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 40%;
+    overflow: hidden;
+}
+
+.about-img-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.about-me-container>div {
+    width: 45%;
+}
+
+.contact {
+    gap: 2rem;
+}
+
+.contact>div {
+    width: 50%;
+}
+
+/* about-me section style */
+
 
 
 @media screen and (max-width: 912px) {
@@ -221,8 +353,19 @@ main {
         display: block;
     }
 
-    main {
+    main,
+    .about-me-container,
+    .contact {
         flex-direction: column;
+
+    }
+
+    .about-me-container div {
+        width: 100%;
+    }
+
+    .small-personal-photo {
+        display: none;
     }
 
 
@@ -238,11 +381,14 @@ main {
         font-size: 34px;
     }
 
+    .personal-photo,
     .img-container-photo {
         height: 320px;
         width: 320px;
         object-position: center;
     }
+
+
 
     .img-logo {
         height: 50px;
